@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════
+   CRM JURÍDICO - CUSTOM THEME
+   ═══════════════════════════════════ */
+
+@theme {
+  --color-bg-primary: #0F1923;
+  --color-bg-panel: #162030;
+  --color-bg-highlight: #1E2D40;
+  --color-accent: #C9A84C;
+  --color-accent-hover: #D4B85E;
+  --color-accent-dim: rgba(201, 168, 76, 0.15);
+  --color-text-primary: #E8E4DC;
+  --color-text-secondary: #9BA3AE;
+  --color-text-muted: #6B7280;
+  --color-border: #2A3A4E;
+  --color-danger: #E74C3C;
+  --color-danger-dim: rgba(231, 76, 60, 0.15);
+  --color-warning: #F39C12;
+  --color-warning-dim: rgba(243, 156, 18, 0.15);
+  --color-success: #27AE60;
+  --color-success-dim: rgba(39, 174, 96, 0.15);
+  --color-info: #3498DB;
+  --color-info-dim: rgba(52, 152, 219, 0.15);
+}
+
+/* ═══════════════════════════════════
+   BASE
+   ═══════════════════════════════════ */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ═══════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ═══════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════ */
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide sidebar and non-print elements */
+  [data-no-print] {
+    display: none !important;
+  }
+
+  /* Report area fills page */
+  [data-print-area] {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 20px !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  [data-print-area] * {
+    color: #000 !important;
+    border-color: #ccc !important;
+    background: transparent !important;
+  }
+
+  [data-print-area] h1,
+  [data-print-area] h2,
+  [data-print-area] h3 {
+    color: #1a1a1a !important;
+  }
+
+  [data-print-area] table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+
+  [data-print-area] th,
+  [data-print-area] td {
+    border: 1px solid #ccc !important;
+    padding: 6px 10px !important;
+    text-align: left !important;
+  }
+
+  [data-print-area] th {
+    background: #f0f0f0 !important;
+    font-weight: 600 !important;
+  }
+
+  [data-print-area] .badge-print {
+    border: 1px solid #666 !important;
+    padding: 2px 8px !important;
+    border-radius: 4px !important;
+    font-size: 11px !important;
+  }
+}

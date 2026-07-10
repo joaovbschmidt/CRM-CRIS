@@ -1,0 +1,133 @@
+import { fmt, today } from '../utils/dateHelpers';
+
+export const INITIAL_PROCESSOS = [
+  {
+    id: '1',
+    dadosPessoais: {
+      nomeCompleto: 'João da Silva',
+      cpfCnpj: '123.456.789-00',
+      rg: '12.345.678-9',
+      dataNascimento: '1985-03-15',
+      profissao: 'Engenheiro Civil',
+      numeroProcesso: '0001234-56.2025.5.01.0001',
+      varaComarca: '1ª Vara do Trabalho - São Paulo/SP',
+      tipoAcao: 'Trabalhista',
+      advogadoResponsavel: 'Dra. Cristina Ramos',
+      dataAbertura: '2025-08-10',
+    },
+    contato: {
+      telefonePrincipal: '(11) 98765-4321',
+      whatsapp: '(11) 98765-4321',
+      email: 'joao.silva@email.com',
+      rua: 'Rua das Acácias',
+      numero: '245',
+      bairro: 'Jardim Paulista',
+      cidade: 'São Paulo',
+      cep: '01410-000',
+      contatoEmergenciaNome: 'Maria da Silva',
+      contatoEmergenciaTelefone: '(11) 91234-5678',
+    },
+    financeiro: {
+      honorarios: 15000,
+      formaPagamento: 'Parcelado',
+      parcelas: 5,
+      valorParcela: 3000,
+      valorRecebido: 6000,
+      valorAberto: 9000,
+      observacoes: 'Pagamento mensal via PIX.',
+    },
+    fase: 5,
+  },
+  {
+    id: '2',
+    dadosPessoais: {
+      nomeCompleto: 'Maria Oliveira',
+      cpfCnpj: '987.654.321-00',
+      rg: '98.765.432-1',
+      dataNascimento: '1990-07-22',
+      profissao: 'Professora',
+      numeroProcesso: '0005678-90.2026.8.26.0100',
+      varaComarca: '3ª Vara Cível - Campinas/SP',
+      tipoAcao: 'Cível',
+      advogadoResponsavel: 'Dra. Cristina Ramos',
+      dataAbertura: '2026-01-15',
+    },
+    contato: {
+      telefonePrincipal: '(19) 99876-5432',
+      whatsapp: '(19) 99876-5432',
+      email: 'maria.oliveira@email.com',
+      rua: 'Av. Brasil',
+      numero: '1200',
+      bairro: 'Centro',
+      cidade: 'Campinas',
+      cep: '13010-100',
+      contatoEmergenciaNome: 'José Oliveira',
+      contatoEmergenciaTelefone: '(19) 98888-7777',
+    },
+    financeiro: {
+      honorarios: 8000,
+      formaPagamento: 'À Vista',
+      parcelas: 1,
+      valorParcela: 8000,
+      valorRecebido: 8000,
+      valorAberto: 0,
+      observacoes: 'Pagamento quitado.',
+    },
+    fase: 2,
+  },
+  {
+    id: '3',
+    dadosPessoais: {
+      nomeCompleto: 'Carlos Mendes',
+      cpfCnpj: '45.678.901/0001-23',
+      rg: '34.567.890-2',
+      dataNascimento: '1978-11-05',
+      profissao: 'Empresário',
+      numeroProcesso: '0009012-34.2026.8.26.0001',
+      varaComarca: '2ª Vara Criminal - São Paulo/SP',
+      tipoAcao: 'Criminal',
+      advogadoResponsavel: 'Dr. André Tavares',
+      dataAbertura: '2026-04-20',
+    },
+    contato: {
+      telefonePrincipal: '(11) 97654-3210',
+      whatsapp: '(11) 97654-3210',
+      email: 'carlos.mendes@empresa.com',
+      rua: 'Rua Augusta',
+      numero: '500',
+      bairro: 'Consolação',
+      cidade: 'São Paulo',
+      cep: '01304-000',
+      contatoEmergenciaNome: 'Ana Mendes',
+      contatoEmergenciaTelefone: '(11) 96543-2109',
+    },
+    financeiro: {
+      honorarios: 25000,
+      formaPagamento: 'Êxito',
+      parcelas: 0,
+      valorParcela: 0,
+      valorRecebido: 0,
+      valorAberto: 25000,
+      observacoes: 'Honorários condicionados ao êxito da causa. 30% do valor recuperado.',
+    },
+    fase: 4,
+  },
+];
+
+export const emptyDadosPessoais = {
+  nomeCompleto: '', cpfCnpj: '', rg: '', dataNascimento: '',
+  profissao: '', numeroProcesso: '', varaComarca: '',
+  tipoAcao: 'Cível', advogadoResponsavel: '', dataAbertura: fmt(today),
+};
+
+export const emptyContato = {
+  telefonePrincipal: '', whatsapp: '', email: '',
+  rua: '', numero: '', bairro: '', cidade: '', cep: '',
+  contatoEmergenciaNome: '', contatoEmergenciaTelefone: '',
+};
+
+export const emptyFinanceiro = {
+  honorarios: 0, formaPagamento: 'À Vista',
+  parcelas: 1, valorParcela: 0, valorRecebido: 0,
+  valorAberto: 0, observacoes: '',
+};

@@ -1,0 +1,410 @@
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --primary: #171717;
+  --primary-foreground: #fafafa;
+  --muted-foreground: #737373;
+  --input: #e5e5e5;
+  --ring: #a3a3a3;
+  --destructive: #dc2626;
+  --radius: 0.625rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .login-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.login-card {
+  width: 100%;
+  max-width: 24rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--input);
+  background-color: var(--card);
+  color: var(--card-foreground);
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.login-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.login-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.login-header p {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.field input {
+  display: flex;
+  height: 2.25rem;
+  width: 100%;
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid var(--input);
+  background-color: transparent;
+  padding: 0.25rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--foreground);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 1px var(--ring);
+}
+
+.field input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  .field input {
+    font-size: 0.875rem;
+  }
+}
+
+.error-message {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--destructive);
+}
+
+.submit-button {
+  display: inline-flex;
+  height: 2.25rem;
+  width: 100%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--radius) - 2px);
+  border: none;
+  background-color: var(--primary);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary-foreground);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  transition: background-color 0.15s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--primary) 90%, transparent);
+}
+
+.submit-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+}
+
+.submit-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.forgot-password {
+  display: flex;
+  justify-content: center;
+}
+
+.forgot-password a,
+.terms a {
+  font-weight: 500;
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.15s ease;
+}
+
+.forgot-password a:hover,
+.terms a:hover {
+  opacity: 0.8;
+}
+
+.forgot-password a {
+  font-size: 0.875rem;
+}
+
+.terms {
+  margin: 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.terms a {
+  font-size: 0.75rem;
+}
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --primary: #171717;
+  --primary-foreground: #fafafa;
+  --muted-foreground: #737373;
+  --input: #e5e5e5;
+  --ring: #a3a3a3;
+  --destructive: #dc2626;
+  --radius: 0.625rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .login-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.login-card {
+  width: 100%;
+  max-width: 24rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--input);
+  background-color: var(--card);
+  color: var(--card-foreground);
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.login-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.login-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.login-header p {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.field input {
+  display: flex;
+  height: 2.25rem;
+  width: 100%;
+  border-radius: calc(var(--radius) - 2px);
+  border: 1px solid var(--input);
+  background-color: transparent;
+  padding: 0.25rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--foreground);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 1px var(--ring);
+}
+
+.field input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  .field input {
+    font-size: 0.875rem;
+  }
+}
+
+.error-message {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--destructive);
+}
+
+.submit-button {
+  display: inline-flex;
+  height: 2.25rem;
+  width: 100%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--radius) - 2px);
+  border: none;
+  background-color: var(--primary);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary-foreground);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  transition: background-color 0.15s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--primary) 90%, transparent);
+}
+
+.submit-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+}
+
+.submit-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.forgot-password {
+  display: flex;
+  justify-content: center;
+}
+
+.forgot-password a,
+.terms a {
+  font-weight: 500;
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.15s ease;
+}
+
+.forgot-password a:hover,
+.terms a:hover {
+  opacity: 0.8;
+}
+
+.forgot-password a {
+  font-size: 0.875rem;
+}
+
+.terms {
+  margin: 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+.terms a {
+  font-size: 0.75rem;
+}
