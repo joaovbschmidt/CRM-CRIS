@@ -1,11 +1,16 @@
-import { useState, useMemo } from 'react';
-import { INITIAL_PRAZOS } from '../data/mockPrazos';
-import { genId } from '../utils/idGenerator';
+import { useState, useMemo, useEffect } from 'react';
+import { prazosService } from '../services/prazosService';
 import { isNextDays, isOverdue } from '../utils/dateHelpers';
 
 export function usePrazos() {
-  const [prazos, setPrazos] = useState(INITIAL_PRAZOS);
+  const [prazos, setPrazos] = useState([]);
   const [filterAgenda, setFilterAgenda] = useState('todos');
+
+  useEffect(() => {
+    prazosService.getPrazos()
+      .then(setPrazos)
+      .catch(error => console.error('Erro ao carregar prazos:', error));
+  }, []);
 
   const filteredPrazos = useMemo(() => {
     let list = [...prazos].sort((a, b) => a.data.localeCompare(b.data));
@@ -15,20 +20,37 @@ export function usePrazos() {
     return list;
   }, [prazos, filterAgenda]);
 
-  const savePrazo = (prazo) => {
-    if (prazos.find(p => p.id === prazo.id)) {
-      setPrazos(prev => prev.map(x => x.id === prazo.id ? prazo : x));
-    } else {
-      setPrazos(prev => [...prev, { ...prazo, id: prazo.id || genId() }]);
+  const savePrazo = async (prazo) => {
+    try {
+      if (prazo.id) {
+        const atualizado = await prazosService.updatePrazo(prazo.id, prazo);
+        setPrazos(prev => prev.map(p => (p.id === prazo.id ? atualizado : p)));
+      } else {
+        const criado = await prazosService.createPrazo(prazo);
+        setPrazos(prev => [...prev, criado]);
+      }
+    } catch (error) {
+      console.error('Erro ao salvar prazo:', error);
+      throw error;
     }
   };
 
-  const deletePrazo = (id) => {
-    setPrazos(prev => prev.filter(p => p.id !== id));
+  const deletePrazo = async (id) => {
+    try {
+      await prazosService.deletePrazo(id);
+      setPrazos(prev => prev.filter(p => p.id !== id));
+    } catch (error) {
+      console.error('Erro ao excluir prazo:', error);
+    }
   };
 
-  const deletePrazosByProcessoId = (processoId) => {
-    setPrazos(prev => prev.filter(p => p.processoId !== processoId));
+  const deletePrazosByProcessoId = async (processoId) => {
+    try {
+      await prazosService.deletePrazosByProcessoId(processoId);
+      setPrazos(prev => prev.filter(p => p.processoId !== processoId));
+    } catch (error) {
+      console.error('Erro ao excluir prazos do processo:', error);
+    }
   };
 
   return {

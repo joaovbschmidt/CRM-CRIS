@@ -66,9 +66,9 @@ export default function CrmJuridico({ onLogout }) {
     setShowProcessoModal(true);
   };
 
-  const handleDeleteProcesso = (id) => {
-    deleteProcesso(id);
-    deletePrazosByProcessoId(id);
+  const handleDeleteProcesso = async (id) => {
+    await deletePrazosByProcessoId(id);
+    await deleteProcesso(id);
   };
 
   // Prazo Handlers
