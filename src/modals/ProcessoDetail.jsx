@@ -18,7 +18,7 @@ export function ProcessoDetail({ open, onClose, processo, prazos }) {
 
         <div>
           <h4 className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Dados Pessoais</h4>
-          <div className="grid grid-cols-3 gap-3 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
             {[
               ['Nome', processo.dadosPessoais.nomeCompleto],
               ['CPF/CNPJ', processo.dadosPessoais.cpfCnpj],
@@ -42,7 +42,7 @@ export function ProcessoDetail({ open, onClose, processo, prazos }) {
 
         <div>
           <h4 className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Contato</h4>
-          <div className="grid grid-cols-3 gap-3 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
             {[
               ['Telefone', processo.contato.telefonePrincipal],
               ['WhatsApp', processo.contato.whatsapp],
@@ -64,7 +64,7 @@ export function ProcessoDetail({ open, onClose, processo, prazos }) {
 
         <div>
           <h4 className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Financeiro</h4>
-          <div className="grid grid-cols-3 gap-3 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
             {[
               ['Honorários', formatCurrency(processo.financeiro.honorarios)],
               ['Pagamento', processo.financeiro.formaPagamento],

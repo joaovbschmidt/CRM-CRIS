@@ -5,7 +5,7 @@ export function Select({ label, value, onChange, options, placeholder = '' }) {
       <select
         value={value}
         onChange={onChange}
-        className="bg-bg-primary border border-border rounded-lg px-3 py-2 text-sm text-text-primary
+        className="bg-bg-primary border border-border rounded-md px-3 py-2 text-sm text-text-primary
                    focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30
                    transition-colors duration-200 appearance-none"
       >

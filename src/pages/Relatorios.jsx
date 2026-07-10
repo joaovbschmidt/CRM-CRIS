@@ -62,7 +62,7 @@ export function Relatorios({
           />
         )}
         {reportType === 'C' && (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input label="Data Início" type="date" value={reportDateStart} onChange={e => setReportDateStart(e.target.value)} />
             <Input label="Data Fim" type="date" value={reportDateEnd} onChange={e => setReportDateEnd(e.target.value)} />
           </div>

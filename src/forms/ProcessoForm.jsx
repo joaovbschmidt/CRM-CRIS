@@ -57,7 +57,7 @@ export function ProcessoForm({ open, onClose, processo, onSave }) {
       </div>
 
       {processoTab === 'pessoais' && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input label="Nome Completo" value={formDP.nomeCompleto} onChange={e => setFormDP({ ...formDP, nomeCompleto: e.target.value })} />
           <Input label="CPF / CNPJ" value={formDP.cpfCnpj} onChange={e => setFormDP({ ...formDP, cpfCnpj: e.target.value })} />
           <Input label="RG" value={formDP.rg} onChange={e => setFormDP({ ...formDP, rg: e.target.value })} />
@@ -78,7 +78,7 @@ export function ProcessoForm({ open, onClose, processo, onSave }) {
       )}
 
       {processoTab === 'contato' && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input label="Telefone Principal" value={formContato.telefonePrincipal} onChange={e => setFormContato({ ...formContato, telefonePrincipal: e.target.value })} />
           <Input label="WhatsApp" value={formContato.whatsapp} onChange={e => setFormContato({ ...formContato, whatsapp: e.target.value })} />
           <div className="col-span-2">
@@ -91,7 +91,7 @@ export function ProcessoForm({ open, onClose, processo, onSave }) {
           <Input label="CEP" value={formContato.cep} onChange={e => setFormContato({ ...formContato, cep: e.target.value })} />
           <div className="col-span-2 border-t border-border pt-4 mt-2">
             <p className="text-xs text-accent font-semibold uppercase tracking-wider mb-3">Contato de Emergência</p>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input label="Nome" value={formContato.contatoEmergenciaNome} onChange={e => setFormContato({ ...formContato, contatoEmergenciaNome: e.target.value })} />
               <Input label="Telefone" value={formContato.contatoEmergenciaTelefone} onChange={e => setFormContato({ ...formContato, contatoEmergenciaTelefone: e.target.value })} />
             </div>
@@ -100,7 +100,7 @@ export function ProcessoForm({ open, onClose, processo, onSave }) {
       )}
 
       {processoTab === 'financeiro' && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input label="Honorários Acordados (R$)" type="number" value={formFin.honorarios} onChange={e => setFormFin({ ...formFin, honorarios: Number(e.target.value) })} />
           <Select label="Forma de Pagamento" value={formFin.formaPagamento} onChange={e => setFormFin({ ...formFin, formaPagamento: e.target.value })} options={FORMAS_PAGAMENTO} />
           <Input label="Qtd. de Parcelas" type="number" value={formFin.parcelas} onChange={e => setFormFin({ ...formFin, parcelas: Number(e.target.value) })} />

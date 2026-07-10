@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { LayoutDashboard, FolderOpen, CalendarDays, FileBarChart, Scale, LogOut } from 'lucide-react';
+import { LayoutDashboard, FolderOpen, CalendarDays, FileBarChart, Scale, LogOut, Menu, X } from 'lucide-react';
 
 import { useProcessos } from './hooks/useProcessos';
 import { usePrazos } from './hooks/usePrazos';
@@ -19,6 +19,7 @@ import { ProcessoDetail } from './modals/ProcessoDetail';
 
 export default function CrmJuridico({ onLogout }) {
   const [page, setPage] = useState('dashboard');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const {
     processos, filteredProcessos, searchProcesso, setSearchProcesso,
@@ -90,62 +91,105 @@ export default function CrmJuridico({ onLogout }) {
     { id: 'relatorios', label: 'Relatórios', icon: FileBarChart },
   ];
 
+  const goToPage = (id) => {
+    setPage(id);
+    setMobileMenuOpen(false);
+  };
+
   const renderSidebar = () => (
-    <aside data-no-print className="w-64 min-h-screen bg-bg-panel border-r border-border flex flex-col fixed left-0 top-0 z-40">
-      <div className="px-6 py-6 border-b border-border">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center shadow-lg shadow-accent/20">
-            <Scale size={20} className="text-bg-primary" />
-          </div>
-          <div>
-            <h1 className="text-base font-bold text-text-primary tracking-wide">CRM Jurídico</h1>
-            <p className="text-[10px] text-text-muted uppercase tracking-widest">Gestão Processual</p>
-          </div>
-        </div>
-      </div>
+    <>
+      {/* overlay no mobile, fecha o menu ao clicar fora */}
+      {mobileMenuOpen && (
+        <div
+          data-no-print
+          className="fixed inset-0 bg-black/60 z-40 md:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
 
-      <nav className="flex-1 px-3 py-4 space-y-1">
-        {navItems.map(item => (
+      <aside
+        data-no-print
+        className={`w-64 min-h-screen bg-bg-panel border-r border-border flex flex-col fixed left-0 top-0 z-50
+          transition-transform duration-200 ease-out
+          ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
+      >
+        <div className="px-6 py-6 border-b border-border flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 border border-accent/40 rounded-md flex items-center justify-center">
+              <Scale size={18} className="text-accent" />
+            </div>
+            <div>
+              <h1 className="text-base font-semibold text-text-primary tracking-wide font-display">CRM Jurídico</h1>
+              <p className="text-[10px] text-text-muted uppercase tracking-widest">Gestão Processual</p>
+            </div>
+          </div>
           <button
-            key={item.id}
-            onClick={() => setPage(item.id)}
-            className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200
-              ${page === item.id
-                ? 'bg-accent/15 text-accent shadow-sm'
-                : 'text-text-secondary hover:text-text-primary hover:bg-bg-highlight'
-              }`}
+            onClick={() => setMobileMenuOpen(false)}
+            className="md:hidden text-text-muted hover:text-text-primary p-1"
           >
-            <item.icon size={18} />
-            {item.label}
-            {item.id === 'agenda' && stats.overdue > 0 && (
-              <span className="ml-auto bg-danger text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
-                {stats.overdue}
-              </span>
-            )}
+            <X size={20} />
           </button>
-        ))}
-      </nav>
+        </div>
 
-      <div className="px-6 py-4 border-t border-border space-y-3">
-        <button
-          onClick={onLogout}
-          className="w-full flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-text-secondary hover:text-danger hover:bg-bg-highlight transition-all duration-200"
-        >
-          <LogOut size={16} />
-          Sair
-        </button>
-        <p className="text-[10px] text-text-muted text-center">
-          © {new Date().getFullYear()} CRM Jurídico
-        </p>
+        <nav className="flex-1 px-3 py-4 space-y-1">
+          {navItems.map(item => (
+            <button
+              key={item.id}
+              onClick={() => goToPage(item.id)}
+              className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-md text-sm font-medium transition-all duration-200
+                ${page === item.id
+                  ? 'bg-accent/15 text-accent border-l-2 border-accent'
+                  : 'text-text-secondary hover:text-text-primary hover:bg-bg-highlight border-l-2 border-transparent'
+                }`}
+            >
+              <item.icon size={18} />
+              {item.label}
+              {item.id === 'agenda' && stats.overdue > 0 && (
+                <span className="ml-auto bg-danger text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                  {stats.overdue}
+                </span>
+              )}
+            </button>
+          ))}
+        </nav>
+
+        <div className="px-6 py-4 border-t border-border space-y-3">
+          <button
+            onClick={onLogout}
+            className="w-full flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium text-text-secondary hover:text-danger hover:bg-bg-highlight transition-all duration-200"
+          >
+            <LogOut size={16} />
+            Sair
+          </button>
+          <p className="text-[10px] text-text-muted text-center">
+            © {new Date().getFullYear()} CRM Jurídico
+          </p>
+        </div>
+      </aside>
+    </>
+  );
+
+  const renderMobileHeader = () => (
+    <header data-no-print className="md:hidden sticky top-0 z-30 bg-bg-panel border-b border-border px-4 py-3 flex items-center justify-between">
+      <div className="flex items-center gap-2">
+        <Scale size={16} className="text-accent" />
+        <span className="text-sm font-semibold font-display text-text-primary">CRM Jurídico</span>
       </div>
-    </aside>
+      <button
+        onClick={() => setMobileMenuOpen(true)}
+        className="text-text-secondary hover:text-text-primary p-1"
+      >
+        <Menu size={22} />
+      </button>
+    </header>
   );
 
   return (
     <div className="flex min-h-screen">
       {renderSidebar()}
-      <main className="flex-1 ml-64 p-8 min-h-screen">
-        {page === 'dashboard' && (
+      <div className="flex-1 md:ml-64 min-h-screen flex flex-col">
+        {renderMobileHeader()}
+        <main className="flex-1 p-4 md:p-8">        {page === 'dashboard' && (
           <Dashboard stats={stats} prazos={prazos} getNomeProcesso={getNomeProcesso} />
         )}
         {page === 'processos' && (
@@ -183,6 +227,7 @@ export default function CrmJuridico({ onLogout }) {
           />
         )}
       </main>
+      </div>
 
       {/* Modais */}
       <ProcessoForm

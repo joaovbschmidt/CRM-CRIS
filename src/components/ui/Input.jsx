@@ -7,7 +7,7 @@ export function Input({ label, value, onChange, type = 'text', placeholder = '',
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="bg-bg-primary border border-border rounded-lg px-3 py-2 text-sm text-text-primary
+        className="bg-bg-primary border border-border rounded-md px-3 py-2 text-sm text-text-primary
                    placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30
                    transition-colors duration-200"
         {...rest}

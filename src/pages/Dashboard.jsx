@@ -12,7 +12,7 @@ export function Dashboard({ stats, prazos, getNomeProcesso }) {
         <p className="text-sm text-text-secondary">Visão geral do escritório</p>
       </div>
 
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
         {[
           { label: 'Total de Processos', value: stats.totalProcessos, icon: Briefcase, accent: 'text-accent', bg: 'bg-accent-dim' },
           { label: 'Prazos da Semana', value: stats.next7, icon: Clock, accent: 'text-warning', bg: 'bg-warning-dim' },
@@ -38,7 +38,7 @@ export function Dashboard({ stats, prazos, getNomeProcesso }) {
           <ChevronRight size={18} className="text-accent" />
           Processos por Fase
         </h3>
-        <div className="grid grid-cols-7 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
           {stats.porFase.map(f => (
             <Card key={f.id} className="text-center group hover:border-accent/30 transition-all cursor-default">
               <p className="text-2xl font-bold text-text-primary mb-1">{f.count}</p>

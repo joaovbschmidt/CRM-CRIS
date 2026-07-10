@@ -12,7 +12,7 @@ export function Processos({
 }) {
   return (
     <div className="space-y-6 animate-[fadeIn_0.3s_ease-out]">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <h2 className="text-2xl font-bold mb-1">Processos</h2>
           <p className="text-sm text-text-secondary">{processos.length} processos cadastrados</p>
@@ -51,7 +51,7 @@ export function Processos({
                 <FaseBadge faseId={proc.fase} />
               </div>
 
-              <div className="grid grid-cols-2 gap-3 mb-4 text-xs text-text-secondary">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 text-xs text-text-secondary">
                 <div className="flex items-center gap-1.5">
                   <Gavel size={12} className="text-text-muted" />
                   {proc.dadosPessoais.tipoAcao}
